@@ -6,20 +6,18 @@
  */
 size_t binary_tree_height(const binary_tree_t *tree)
 {
-        size_t l = 0;
-        size_t r = 0;
+	size_t l = 0;
+	size_t r = 0;
 
-        if (tree == NULL)
-                return (0);
-        else
-        {
-                if (tree)
-                {
-                        l = tree->left ? 1 + binary_tree_height(tree->left): 0;
-                        r = tree->right ? 1 + binary_tree_height(tree->right): 0;
-                }
-                return ((l > r) ? l : r);
-        }
+	if (tree == NULL)
+		return (0);
+	if (tree)
+	{
+		l = tree->left ? 1 + binary_tree_height(tree->left) : 0;
+		r = tree->right ? 1 + binary_tree_height(tree->right)
+			: 0;
+	}
+	return ((l > r) ? l : r);
 }
 /**
  *binary_tree_balance - measures the balance factor of a binary tree
@@ -36,5 +34,5 @@ int binary_tree_balance(const binary_tree_t *tree)
 	left_height = binary_tree_height(tree->left);
 	right_height = binary_tree_height(tree->right);
 
-	return (int)(left_height - right_height);
+	return ((int)(left_height - right_height));
 }
