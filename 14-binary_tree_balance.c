@@ -2,7 +2,7 @@
 /**
  *binary_tree_height - Calculate the height of a inary tree
  *@tree: pointer to root of binary tree
- *Return: height of tree
+ *Return: longest height of tree
  */
 size_t binary_tree_height(const binary_tree_t *tree)
 {
@@ -18,7 +18,7 @@ size_t binary_tree_height(const binary_tree_t *tree)
                         l = tree->left ? 1 + binary_tree_height(tree->left): 0;
                         r = tree->right ? 1 + binary_tree_height(tree->right): 0;
                 }
-                return ((l > r) ? l:r);
+                return ((l > r) ? l : r);
         }
 }
 /**
@@ -28,13 +28,13 @@ size_t binary_tree_height(const binary_tree_t *tree)
  */
 int binary_tree_balance(const binary_tree_t *tree)
 {
-	int left_nodes = 0, right_nodes = 0;
+	int left_height = 0, right_height = 0;
 
 	if (tree == NULL)
 		return (0);
 
-	left_nodes = (int)binary_tree_height(tree->left);
-	right_nodes = (int)binary_tree_height(tree->right);
+	left_height = binary_tree_height(tree->left);
+	right_height = binary_tree_height(tree->right);
 
-	return (left_nodes -x right_nodes);
+	return (int)(left_height - right_height);
 }
